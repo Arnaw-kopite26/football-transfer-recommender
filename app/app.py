@@ -283,10 +283,12 @@ DATA_DIR = r"C:\Users\arnaw\OneDrive\Desktop\transfer_recomender\data"
 # ── Load Data ─────────────────────────────────────────
 @st.cache_data
 def load_data():
+    cols = ['Player', 'Squad', 'Comp', 'Pos', 'Age', 'Min', 'cluster']
     fw      = pd.read_csv(os.path.join(DATA_DIR, "fw_clustered.csv"))
     mf      = pd.read_csv(os.path.join(DATA_DIR, "mf_clustered.csv"))
     df      = pd.read_csv(os.path.join(DATA_DIR, "df_clustered.csv"))
-    players = pd.read_csv(os.path.join(DATA_DIR, "players_data-2024_2025.csv"))
+    players = pd.read_csv(os.path.join(DATA_DIR, "players_data-2024_2025.csv"),
+                         usecols=['Player', 'Squad', 'Comp', 'Pos', 'Age', 'Nation'])
     return fw, mf, df, players
 
 fw, mf, df, players = load_data()
